@@ -17,7 +17,7 @@ function Member_detail() {
     const fetchMemberDetails = async () => {
       try {
         const response = await axios.get(
-          `https://king-prawn-app-b4omc.ondigitalocean.app/api/members/${memberId}`
+          `http://157.245.98.250/api/members/${memberId}`
         );
         setMemberDetails(response.data);
         setLoading(false);

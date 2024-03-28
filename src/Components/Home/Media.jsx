@@ -7,9 +7,7 @@ export default function Media() {
 
   useEffect(() => {
     async function getMedia() {
-      const response = await axios.get(
-        "https://king-prawn-app-b4omc.ondigitalocean.app/api/medias"
-      );
+      const response = await axios.get("http://157.245.98.250/api/medias");
 
       if (response.status === 200) setMedia(response.data);
     }

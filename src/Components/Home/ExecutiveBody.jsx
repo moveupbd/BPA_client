@@ -10,9 +10,7 @@ export default function ExecutiveBody() {
   useEffect(() => {
     const fetchMemberList = async () => {
       try {
-        const response = await axios.get(
-          "https://king-prawn-app-b4omc.ondigitalocean.app/api/members"
-        );
+        const response = await axios.get("http://157.245.98.250/api/members");
         setMemberList(response.data);
         setLoading(false);
       } catch (error) {

@@ -8,17 +8,13 @@ function Search_notice() {
 
   useEffect(() => {
     async function getEvents() {
-      const response = await axios.get(
-        "https://king-prawn-app-b4omc.ondigitalocean.app/api/events"
-      );
+      const response = await axios.get("http://157.245.98.250/api/events");
 
       if (response.status === 200) setEvents(response.data);
     }
 
     getEvents();
   }, []);
-
-  console.log(events);
 
   return (
     <div>
