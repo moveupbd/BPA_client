@@ -1,12 +1,33 @@
 // import React from 'react'
 
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 function Search_notice() {
+  const [events, setEvents] = useState(null);
+
+  useEffect(() => {
+    async function getEvents() {
+      const response = await axios.get(
+        "https://king-prawn-app-b4omc.ondigitalocean.app/api/events"
+      );
+
+      if (response.status === 200) setEvents(response.data);
+    }
+
+    getEvents();
+  }, []);
+
+  console.log(events);
+
   return (
     <div>
       {/* Search Member  */}
       <div className="bg-[#ECECEB]">
-        <h1 className="text-[22px]">Search Member</h1>
-        <form action="">
+        <h1 className="text-lg md:text-xl bg-[#171c49] text-white p-2">
+          Search Member
+        </h1>
+        <form action="" className="px-2 py-6">
           <div className="Field pb-2">
             <label className="mr-12">Name </label>
             <input className="border border-[gray] px-3 pb-1" name="name" />
@@ -26,51 +47,28 @@ function Search_notice() {
       </div>
 
       {/* Notice Part  */}
-      <div className="bg-[#ECECEB]">
-        <h1 className="mt-10 mb-4 text-[22px]">Notice</h1>
-        <div>
-          <div className="flex mb-4">
-            <div className="w-[200px] h-[80px] border-[gray] rounded-md overflow-hidden">
-              <img
-                className="w-full h-full object-fit"
-                src="https://dhakabarassociation.com/assets/NoticePhoto/IMG_20240319094300.jpg"
-                alt="pic"
-              />
+      <div className="bg-[#ECECEB] mt-10">
+        <h1 className="text-lg md:text-xl bg-[#171c49] text-white p-2">
+          Notice
+        </h1>
+
+        <div className="p-2">
+          {events?.map((event) => (
+            <div key={event.id} className="flex py-4 border-b-2 border-black">
+              <div className="w-[200px] h-[80px] border-[gray] rounded-md overflow-hidden">
+                <img
+                  className="w-full h-full object-fit"
+                  src={event.image}
+                  alt="event"
+                />
+              </div>
+
+              <span className="space-y-3">
+                <p className="ml-1">{event.title}</p>
+                <p className="ml-1">{event.created_at}</p>
+              </span>
             </div>
-            <p className="ml-1 text-justify">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium, laudantium.
-            </p>
-          </div>
-          <div className="h-[1px] w-full bg-black"></div>
-          <div className="flex my-3">
-            <div className="w-[200px] h-[80px] border-[gray] rounded-md overflow-hidden">
-              <img
-                className="w-full h-full object-fit"
-                src="https://dhakabarassociation.com/assets/NoticePhoto/PressRelease_20231029185621.jpg"
-                alt="pic"
-              />
-            </div>
-            <p className="ml-1 text-justify">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium, laudantium.
-            </p>
-          </div>
-          <div className="h-[1px] w-full bg-black"></div>
-          <div className="flex my-3">
-            <div className="w-[200px] h-[80px] border-[gray] rounded-md overflow-hidden">
-              <img
-                className="w-full h-full object-fit"
-                src="https://dhakabarassociation.com/assets/NoticePhoto/IMG_20230904150028.jpg"
-                alt="pic"
-              />
-            </div>
-            <p className="ml-1 text-justify">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium, laudantium.
-            </p>
-          </div>
-          <div className="h-[1px] w-full bg-black"></div>
+          ))}
         </div>
       </div>
     </div>
