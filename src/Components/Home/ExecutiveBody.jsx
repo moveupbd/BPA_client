@@ -10,7 +10,9 @@ export default function ExecutiveBody() {
   useEffect(() => {
     const fetchMemberList = async () => {
       try {
-        const response = await axios.get("http://157.245.98.250/api/members");
+        const response = await axios.get(
+          "https://king-prawn-app-b4omc.ondigitalocean.app/api/members"
+        );
         setMemberList(response.data);
         setLoading(false);
       } catch (error) {
@@ -27,13 +29,8 @@ export default function ExecutiveBody() {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 mt-4 px-2 max-w-xl mx-auto">
+      <div className="grid grid-cols-2 gap-4 mt-4 px-2">
         {memberList?.slice(0, 2).map((member) => (
-          <ExecutiveCard key={member.id} data={member} />
-        ))}
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8 px-2">
-        {memberList?.slice(2, 5).map((member) => (
           <ExecutiveCard key={member.id} data={member} />
         ))}
       </div>

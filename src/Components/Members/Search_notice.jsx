@@ -8,7 +8,9 @@ function Search_notice() {
 
   useEffect(() => {
     async function getEvents() {
-      const response = await axios.get("http://157.245.98.250/api/events");
+      const response = await axios.get(
+        "https://king-prawn-app-b4omc.ondigitalocean.app/api/events"
+      );
 
       if (response.status === 200) setEvents(response.data);
     }
@@ -50,14 +52,15 @@ function Search_notice() {
 
         <div className="p-2">
           {events?.map((event) => (
-            <div key={event.id} className="flex py-4 border-b-2 border-black">
-              <div className="w-[200px] h-[80px] border-[gray] rounded-md overflow-hidden">
-                <img
-                  className="w-full h-full object-fit"
-                  src={event.image}
-                  alt="event"
-                />
-              </div>
+            <div
+              key={event.id}
+              className="flex gap-2 py-4 border-b-2 border-black"
+            >
+              <img
+                className="max-w-24 object-fit"
+                src={event.image}
+                alt="event"
+              />
 
               <span className="space-y-3">
                 <p className="ml-1">{event.title}</p>

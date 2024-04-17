@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { MdOutlineBloodtype } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa6";
 import Search_notice from "./Search_notice";
+import MemberProfile from "./MemberProfile";
 
 function Member_detail() {
   const [memberDetails, setMemberDetails] = useState(null);
@@ -17,7 +18,7 @@ function Member_detail() {
     const fetchMemberDetails = async () => {
       try {
         const response = await axios.get(
-          `http://157.245.98.250/api/members/${memberId}`
+          `https://king-prawn-app-b4omc.ondigitalocean.app/api/members/${memberId}`
         );
         setMemberDetails(response.data);
         setLoading(false);
@@ -45,13 +46,16 @@ function Member_detail() {
   }
 
   return (
-    <div className="max-w-[90%] mx-auto ">
-      <h1 className="text-3xl font-semibold mb-4 text-center">
-        Member Details
-      </h1>
+    <div className="max-w-screen-xl mx-auto ">
+      <h1 className="text-2xl font-semibold my-4 mx-3">Member Details</h1>
       <div className="lg:flex">
-        <div id="first" className="m-3 bg-[] w-[90%] bg-[#ECECEB]">
-          <h1 className="text-center text-xl mt-1.5">Profile</h1>
+        <div
+          id="first"
+          className="m-3 p-4 rounded-lg lg:w-[90%] bg-gradient-to-b from-slate-50 to-zinc-200"
+        >
+          {memberDetails && <MemberProfile data={memberDetails} />}
+
+          {/* <h1 className="text-center text-xl mt-1.5">Profile</h1>
           <div className="mx-auto md:max-w-[10%] max-w-[20%] pt-3">
             <img
               src={memberDetails[0].avatar}
@@ -120,7 +124,7 @@ function Member_detail() {
                 <p>Chamber Address: {memberDetails[0].chamber_address}</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div id="second" className="m-3 flex-grow">
           <Search_notice />

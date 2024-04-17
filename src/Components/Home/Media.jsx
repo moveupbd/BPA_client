@@ -7,7 +7,9 @@ export default function Media() {
 
   useEffect(() => {
     async function getMedia() {
-      const response = await axios.get("http://157.245.98.250/api/medias");
+      const response = await axios.get(
+        "https://king-prawn-app-b4omc.ondigitalocean.app/api/medias"
+      );
 
       if (response.status === 200) setMedia(response.data);
     }
@@ -17,7 +19,9 @@ export default function Media() {
 
   return (
     <div className="bg-[#ECECEB]">
-      <h1 className="text-lg md:text-xl bg-[#171c49] text-white p-2">Media</h1>
+      <h1 className="text-lg md:text-xl bg-[#171c49] text-white p-2">
+        Resources
+      </h1>
 
       <div className="p-2">
         {media?.map((med) => (
@@ -26,7 +30,7 @@ export default function Media() {
               <img src={med.image} className="w-full h-full object-cover" />
             </div>
             <h2 className="font-semibold">{med.title}</h2>
-            <p>{med.description.slice(0, 80)} ...</p>
+            <p className="text-wrap">{med.description.slice(0, 25)} ...</p>
           </Link>
         ))}
       </div>

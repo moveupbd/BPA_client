@@ -11,8 +11,8 @@ export default function DesktopNavbar({ menuOptions }) {
             alt=""
             className="h-[80px] pt-5"
           />
-          <h1 className="max-w-[450px] text-center pt-5 font-bold text-[20px]">
-            THE FEDERATION OF BANGLADESH CHAMBERS OF COMMERCE & INDUSTRY
+          <h1 className="max-w-[450px] text-center pt-5 font-bold text-3xl uppercase">
+            Broadcast Producers Associations
           </h1>
           <img
             src="https://fbcci.org/public/storage/upload/conf/230626102847-15065.jpeg"
@@ -23,11 +23,10 @@ export default function DesktopNavbar({ menuOptions }) {
       </div>
       <div className="bg-[#171C49] text-white py-4">
         <div className="flex justify-center ">
-          <ul className="none lg:flex gap-5 " >
+          <ul className="none lg:flex gap-5 ">
             {menuOptions.map((item) => (
-              <DropDown key={item.title} item={item}  />
-          ))}
-            
+              <DropDown key={item.title} item={item} />
+            ))}
           </ul>
         </div>
       </div>

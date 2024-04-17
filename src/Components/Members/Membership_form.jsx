@@ -45,7 +45,10 @@ function Membership_form() {
       for (const key in formData) {
         formDataToSend.append(key, formData[key]);
       }
-      await axios.post("http://157.245.98.250/api/members/", formDataToSend);
+      await axios.post(
+        "https://king-prawn-app-b4omc.ondigitalocean.app/api/members/",
+        formDataToSend
+      );
       setRegistrationStatus("Successfully registered.");
       setFormData(initialConstate);
     } catch (error) {

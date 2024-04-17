@@ -11,7 +11,9 @@ function All_members() {
   useEffect(() => {
     const fetchMemberList = async () => {
       try {
-        const response = await axios.get("http://157.245.98.250/api/members");
+        const response = await axios.get(
+          "https://king-prawn-app-b4omc.ondigitalocean.app/api/members"
+        );
         setMemberList(response.data);
         setLoading(false);
         console.log("here is the reponse member", response);
@@ -40,7 +42,7 @@ function All_members() {
   return (
     <div className="max-w-[90%] mx-auto">
       <h1 className="text-[20px] my-4">Member List</h1>
-      <ul className="grid grid-cols-6 gap-0">
+      <ul className="grid grid-cols-6 gap-4">
         {memberList.map((member) => (
           <li
             key={member.id}
