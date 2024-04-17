@@ -2,9 +2,11 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Search_notice() {
   const [events, setEvents] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getEvents() {
@@ -18,6 +20,28 @@ function Search_notice() {
     getEvents();
   }, []);
 
+  async function SearchMember(e) {
+    e.preventDefault();
+    let response;
+    if (e.target.name.value != null) {
+      response = await axios.get(
+        `https://king-prawn-app-b4omc.ondigitalocean.app/api/members/?search=${e.target.name.value}`
+      );
+    } else {
+      response = await axios.get(
+        `https://king-prawn-app-b4omc.ondigitalocean.app/api/members/?search=${e.target.name.value}`
+      );
+    }
+
+    if (response.data.length < 1) {
+      alert("No member found with such name. Please try again.");
+    } else {
+      navigate(`/member-detail/${response.data[0].id}`);
+    }
+
+    console.log(response.data);
+  }
+
   return (
     <div>
       {/* Search Member  */}
@@ -25,18 +49,15 @@ function Search_notice() {
         <h1 className="text-lg md:text-xl bg-[#171c49] text-white p-2">
           Search Member
         </h1>
-        <form action="" className="px-2 py-6">
+        <form onSubmit={(e) => SearchMember(e)} className="px-2 py-6">
           <div className="Field pb-2">
             <label className="mr-12">Name </label>
             <input className="border border-[gray] px-3 pb-1" name="name" />
           </div>
-          <div className="Field pb-2">
-            <label className="mr-[14px]">Member ID</label>
-            <input className="border border-[gray] px-3 pb-1" name="name" />
-          </div>
+
           <div className="Field pb-2">
             <label className="mr-12">Phone</label>
-            <input className="border border-[gray] px-3 pb-1" name="name" />
+            <input className="border border-[gray] px-3 pb-1" name="phone" />
           </div>
           <button action="" className="border border-red-500 px-2 rounded-sm">
             Search

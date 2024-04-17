@@ -20,7 +20,7 @@ export default function Gallery() {
     fetchMemberList();
   }, []);
 
-  console.log(gallery);
+  // console.log(gallery);
   return (
     <>
       <div className="mt-4 px-2 grid grid-cols-2 xl:grid-cols-3 gap-4">

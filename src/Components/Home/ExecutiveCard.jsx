@@ -15,8 +15,8 @@ export default function ExecutiveCard({ data }) {
       to={`/member-detail/${data.id}`}
       className="p-3 border flex flex-col md:flex-row items-center gap-2 md:gap-4 rounded-lg shadow-md "
     >
-      <p className="md:-rotate-90 md:w-2 text-lg font-semibold tracking-wider">
-        President
+      <p className="md:-rotate-90 md:w-2 text-lg font-semibold tracking-wider uppercase md:ml-2 md:-mb-4">
+        {data.committee_position}
       </p>
       <img
         src={data.avatar}
@@ -28,7 +28,9 @@ export default function ExecutiveCard({ data }) {
         <p className="text-lg md:text-xl font-semibold capitalize">
           {data.name}
         </p>
-        {/* <p className="text-sm">{data.email}</p> */}
+        <p className="font-light text-sm font-mono text-neutral-600">
+          ID: {data?.membership_no}
+        </p>
 
         <div
           className="mt-2 md:mt-4 flex flex-wrap gap-1 items-center justify-start opacity-65"

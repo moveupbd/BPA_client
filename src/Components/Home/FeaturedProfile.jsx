@@ -25,7 +25,7 @@ export default function FeaturedProfile() {
     fetchMemberList();
   }, []);
 
-  console.log(member);
+  // console.log(member);
   return (
     <div className="mt-10 p-2">
       <h4 className="text-lg lg:text-xl font-semibold">Featured Member</h4>
@@ -42,7 +42,9 @@ export default function FeaturedProfile() {
             />
 
             <div className="py-2">
-              <p className="text-lg md:text-xl font-semibold">{member?.name}</p>
+              <p className="text-lg md:text-xl font-semibold capitalize">
+                {member?.name}
+              </p>
               <p className="font-light text-sm font-mono text-neutral-600">
                 ID: {member?.membership_no}
               </p>

@@ -11,7 +11,7 @@ export default function ExecutiveBody() {
     const fetchMemberList = async () => {
       try {
         const response = await axios.get(
-          "https://king-prawn-app-b4omc.ondigitalocean.app/api/members"
+          "https://king-prawn-app-b4omc.ondigitalocean.app/api/executive-committe"
         );
         setMemberList(response.data);
         setLoading(false);
